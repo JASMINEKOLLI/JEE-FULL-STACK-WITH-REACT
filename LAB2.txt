@@ -1,0 +1,156 @@
+//EXERCISE1//
+import java.util.Scanner;
+public class Exercise1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner Sc=new Scanner(System.in);
+		System.out.println("Enter the number : ");
+		int num=Sc.nextInt();
+//		int num=no*no*no;
+		int sum=0;
+		while(num!=0){
+			int digit=num%10;
+			sum=sum+(digit*digit*digit);
+//			sum=sum+digit;
+			num=num/10;
+		}
+		System.out.println("Sum of cube of digit : "+sum);
+
+	}
+
+}
+
+
+//EXERCISE 2//
+
+import java.util.Arrays;
+import java.util.Scanner;
+public class Exercise2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+     Scanner sc=new Scanner(System.in);
+     System.out.println("Enter the size of the array: ");
+		int size=Integer.parseInt(sc.nextLine());
+
+		String [] names=new String[size];
+		System.out.println("Enter the names") ;
+		for(int i=0;i<size;i++) {
+			names[i]=sc.nextLine();
+		}
+
+		String s=sortString(names);
+}
+	private static String sortString(String[] names) {
+		Arrays.sort(names);
+		int len=names.length;
+		int mid=len/2;
+		System.out.println("Resultant array is: ");
+		if(len%2==0) {
+			for(int i=0;i<mid;i++) {
+				System.out.println(names[i].toUpperCase());
+			}
+			for(int j=mid;j<len;j++)//int j=len-1;j>=len/2;j--
+			{
+				System.out.println(names[j].toLowerCase());
+			}
+		}
+		else {
+			for(int i=0;i<(mid)+1;i++) {
+				System.out.println(names[i].toUpperCase());
+			}
+			for(int j=(mid+1);j<len;j++)//int j=len-1;j>=len/2;j--
+			{
+				System.out.println(names[j].toLowerCase());
+			}
+		}
+
+		return null;
+	}
+     
+	}
+
+//EXERCISE3//
+
+
+import java.util.Arrays;
+import java.util.Scanner;
+public class Exercise3 {
+private static Scanner sc=new Scanner(System.in);
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Enter array size : ");
+		int n=sc.nextInt();
+		int arr[] = new int[n];
+		System.out.println("Enter array elements : ");
+		for(int i=0;i<n;i++) {
+			arr[i]=sc.nextInt();
+		}
+		int num=getSecondSmallest(arr);
+		System.out.println("Second smallest no is: "+num);
+
+	}
+	private static int getSecondSmallest(int[] arr) {
+		// TODO Auto-generated method stub
+		int temp;
+		for(int i=0;i<arr.length;i++) {
+			for(int j=i+1;j<arr.length;j++) {
+				if(arr[i]>arr[j]) {
+					temp=arr[i];
+					arr[i]=arr[j];
+					arr[j]=temp;
+				}
+			}
+		}
+		return arr[1];
+	}
+
+}
+	
+//EXERCISE4//
+
+
+import java.util.Arrays;
+import java.util.Scanner;
+public class Exercise4 {
+private static Scanner sc=new Scanner(System.in);
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the size of array");
+//		int size=Integer.parseInt(sc.nextLine());
+		int size=sc.nextInt();
+
+		int [] arr=new int[size];
+		System.out.println("Enter array elemts: ");
+		for(int i=0;i<size;i++) {
+			arr[i]=sc.nextInt();
+		}
+		int a=modifyArray(arr);
+		System.out.println("Resultant array: ");
+		for(int i=0;i<a;i++) {
+			System.out.print(arr[i]+ "\t");
+		}
+
+	}
+
+	private static int modifyArray(int[] arr) {
+		Arrays.sort(arr);
+		int n=arr.length;
+		int temp[]=new int[n];
+		int j=0;
+		for(int i=0;i<(n-1);i++) {
+			if(arr[i]!=arr[i+1]) {
+				temp[j++]=arr[i];
+			}
+		}
+		temp[j++]=arr[n-1];
+
+		for(int i=0;i<j;i++) {
+			arr[i]=temp[i];
+		}
+		return j;
+}
+}
+

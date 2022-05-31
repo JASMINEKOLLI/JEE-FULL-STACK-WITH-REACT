@@ -1,0 +1,182 @@
+//EXERCISE1//
+
+import java.util.Scanner;
+public class Exercise1 {
+public static void main(String[] args) {
+	Scanner Sc=new Scanner(System.in);
+	System.out.println("Enter the size of the arry: ");
+	int size=Sc.nextInt();
+	int[] num=new int[size];
+	System.out.println("Enter the array elements:");
+	for(int i=0;i<size;i++) {
+		num[i]=Sc.nextInt();
+	}
+	System.out.println("the integer array is");
+	for(int i=0;i<size;i++) {	
+		System.out.print(num[i]+"\t");
+	}
+
+	int sum=0;
+	for(int i=0;i<size;i++) {	
+		sum=sum+num[i];
+	}
+	System.out.println();
+	System.out.println("Sum = "+sum);
+}
+}
+
+//EXERCISE 2//
+import java.util.Scanner;
+public class Exercise2 {
+public static void main(String[] args) {
+		Scanner Sc=new Scanner(System.in);
+		System.out.println("enter the string :");
+		String str=Sc.nextLine();
+		String str2=getImage(str);
+		String result=str.concat(str2);
+		System.out.println("Mirror Image: "+str+"|"+str2);
+}
+private static String getImage(String str) {
+	StringBuffer sb=new StringBuffer(str);
+	String s=sb.reverse().toString();
+	return s;
+}
+}
+
+//EXERCISE 3//
+
+import java.util.Scanner;
+public class Exercise3 {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter string : ");
+		String str=sc.nextLine();
+		String result=alterString(str);
+		System.out.println("Result: "+result);
+	}
+
+	private static String alterString(String str) {
+		char ch[]=str.toCharArray();
+		for(int i=0;i<ch.length;i++) {
+			if(!checkVowel(ch[i])) {
+				if(ch[i]=='z') {
+					ch[i]= 'b';
+				}
+				else {
+					ch[i]=(char) (ch[i]+1);
+					if(checkVowel(ch[i])) {
+						ch[i]=(char) (ch[i]+1);
+					}
+				}
+			}
+		}
+		return String.valueOf(ch);
+	}
+
+	static boolean checkVowel(char ch) {
+		if( ch!='a' && ch!='e' && ch!='i' && ch!='o' && ch!='u') {
+			return false;
+		}
+		return true;
+
+	}
+
+}
+
+
+//EXERCISE 4//
+
+import java.util.Scanner;
+public class Exercise4 {
+public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	Scanner sc=new Scanner(System.in);
+
+	System.out.println("Enter the number: ");
+	int number=Integer.parseInt(sc.nextLine());
+	String strNum=String.valueOf(number);
+
+	//		System.out.println("N::"+strNum);
+	//		char[] ch = strNum.toCharArray();
+
+	char[] ch=new char[strNum.length()];	//declare char array size same as size of string
+
+	int num=0;
+	StringBuffer sb=new StringBuffer();
+
+
+	for(int i=0;i<strNum.length();i++) {
+		ch[i]=strNum.charAt(i);
+
+	}
+
+	int[] no=new int[ch.length];
+	System.out.println("NO::"+no.length);
+	for(int i=0;i<ch.length;i++) {
+		no[i]=Integer.parseInt(String.valueOf(ch[i]));
+	}
+
+
+	for(int j=1;j<no.length;j++) {
+		int diff=j==0?0:no[j]-no[j-1];
+		sb.append(diff);
+
+	}
+	String s=sb.toString();
+	s.split("-");
+
+	System.out.println(s);
+}
+	}
+
+
+//EXERCISE5//
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IoException;
+import java.util.Scanner;
+public class Exercise5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner (system.in);
+		BufferedReader br=null;
+		int lineCnt=0;
+		int CharCnt=0;
+		int WordCnt=0;
+		try {
+			br=new BufferedReader(new FileReader("E:\\Program Files\\eclipse-workplace\\capgemini-nov-2020\\Lab3\\text"));
+
+			String line=br.readLine();
+			while(line!=null) {
+
+				lineCnt++;
+
+				String [] word=line.split(" ");
+				wordCnt=wordCnt+word.length;
+
+				for(String s:word) {
+					charCnt=charCnt+s.length();
+				}
+				line=br.readLine();
+			}
+			//}
+			System.out.println("No of Words: "+wordCnt);
+			System.out.println("No of characters: "+charCnt);
+			System.out.println("No of lines: "+lineCnt);
+		}
+		catch(IO Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			try {
+				br.close();
+			} catch (IO Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		}
+
+	}
+
